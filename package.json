@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "browserify": "^17.0.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.3",
+    "uniq": "^1.0.1"
+  },
+  "name": "wordsfun",
+  "description": "A simple clone of urban dictionary using gin pulling words from a community rapid api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify views/js/app.jsx -o bundle.jsx"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wizkaley/urbandictionary.git"
+  },
+  "author": "Eshan Kaley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wizkaley/urbandictionary/issues"
+  },
+  "homepage": "https://github.com/Wizkaley/urbandictionary#readme"
+}
