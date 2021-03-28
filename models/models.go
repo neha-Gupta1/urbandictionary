@@ -2,7 +2,7 @@ package models
 
 import "time"
 
-type Word struct {
+type WordResult struct {
 	Definition  string        `json:"definition"`
 	Permalink   string        `json:"permalink"`
 	ThumbsUp    int           `json:"thumbs_up"`

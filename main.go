@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"wordsfun/models"
 	"wordsfun/worker"
 
 	"github.com/gin-gonic/contrib/static"
@@ -10,8 +11,8 @@ import (
 )
 
 type Result struct {
-	Word       string `json:"word" binding:"required"`
-	Definition string `json:"definition" binding:"required"`
+	Word       string              `json:"word" binding:"required"`
+	WordResult []models.WordResult `json:"wordresult" binding:"required"`
 }
 
 func main() {
@@ -42,7 +43,7 @@ func main() {
 			}
 			result := Result{
 				Word:       word,
-				Definition: res,
+				WordResult: res,
 			}
 			c.JSON(http.StatusOK, result)
 		})

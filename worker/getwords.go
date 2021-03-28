@@ -10,7 +10,7 @@ import (
 	"wordsfun/models"
 )
 
-func FetchWord(word string) (ok bool, bod string, err error) {
+func FetchWord(word string) (ok bool, bod []models.WordResult, err error) {
 	url := "https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=" + fmt.Sprintf("%s", word)
 
 	req, _ := http.NewRequest("GET", url, nil)
@@ -21,16 +21,16 @@ func FetchWord(word string) (ok bool, bod string, err error) {
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {
 		log.Print("error while fetching work pls try again :: ", err)
-		return false, "", err
+		return false, nil, err
 	}
 
 	defer res.Body.Close()
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
 		log.Print("error while reading response body try again :: ", err)
-		return false, "", err
+		return false, nil, err
 	}
-	var words map[string][]models.Word
+	var words map[string][]models.WordResult
 	fmt.Println(string(body))
 	r := bytes.NewReader(body)
 
@@ -38,7 +38,7 @@ func FetchWord(word string) (ok bool, bod string, err error) {
 
 	if err = dec.Decode(&words); err != nil {
 		log.Print("error while converting to common model")
-		return false, "", err
+		return false, nil, err
 	}
 
 	// ac, mok := words["list"].([]map[string]string)
@@ -49,8 +49,9 @@ func FetchWord(word string) (ok bool, bod string, err error) {
 
 	list := words["list"]
 
-	log.Print("-----------------------------------")
-	log.Println("the definition is :: ", list[0].Definition)
-	log.Print("-----------------------------------")
-	return true, list[0].Definition, nil
+	// log.Print("-----------------------------------")
+	// log.Println("the definition is :: ", list[0].Definition)
+	// log.Println(list[1].Definition)
+	// log.Print("-----------------------------------")
+	return true, list, nil
 }

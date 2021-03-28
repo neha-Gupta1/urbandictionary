@@ -10,7 +10,7 @@ class Words extends React.Component{
         super(props);
         this.state = {
            word:'',
-           result: [],
+           wordresult: [],
         }
     }
 
@@ -25,7 +25,10 @@ class Words extends React.Component{
         .then((data) => {
             console.log("hello")
             console.log(data);
-            this.setState({result: data});
+            this.setState({
+                word: inp,
+                wordresult: data.wordresult,
+            });
         })
         .catch(err => {
             console.log(err)
@@ -33,6 +36,10 @@ class Words extends React.Component{
     }
 
     render() {
+        const wr = this.state.wordresult;
+        const w = this.state.word;
+        const a = Array.from(wr)
+        console.log(Array.isArray(wr))
         return (
         <div className="container">
                 <div className="col-xs-8 col-xs-offset-2 jumbotron text-center" >
@@ -54,17 +61,20 @@ class Words extends React.Component{
                             
                         </button>
                     </form>
-                    <p><h2># {this.state.result["word"]}</h2></p>
-                    <p> <b>Definition : </b>{this.state.result["definition"]}</p>
+                            <h2># {w}</h2>
+                            {a.map((entry,index) => (
+                                <div key={index} class="container p-3 my-3 border">
+                                    <span><b>Definition : </b>{entry.definition}</span><br/>
+                                    <span><b>Example : </b>{entry.example}</span><br/>
+                                    <span><b>Author :</b> {entry.author}</span><br/>
+                                    <span><b>ThumbsUp :</b> {entry.thumbs_up}</span><br/><br/>
+                                </div>
+                            
+                            ))}
                 </div>
           </div>
         )
     }
-
-    handleChange = ({target}) => {
-        this.setState( {[target.name] : target.value})
-    };
-
 }
 
 
