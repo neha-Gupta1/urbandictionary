@@ -1,0 +1,9 @@
+language: ruby
+  rvm: "2.3.3"
+  script:
+  - "Gem Version is..."
+  - gem -v
+  - "Installing license finder ..."
+  - gem install license_finder
+  - "Finding Licenses"
+  - license_finder 
