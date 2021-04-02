@@ -1,9 +1,10 @@
-language: ruby
-  rvm: "2.3.3"
-  script:
-  - "Gem Version is..."
-  - gem -v
-  - "Installing license finder ..."
-  - gem install license_finder
-  - "Finding Licenses"
-  - license_finder 
+dist: xenial
+jobs:
+  - language: ruby
+    rvm: "2.3.3"
+    script:
+    - gem -v
+    - echo "Installing license finder ..."
+    - gem install license_finder
+    - echo "Finding Licenses"
+    - license_finder 
