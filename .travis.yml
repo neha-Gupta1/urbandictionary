@@ -1,5 +1,14 @@
 dist: xenial
 jobs:
+  language: go
+    go: 1.15.x
+    script:
+    - gem -v
+    - echo "Installing license finder ..."
+    - gem install license_finder
+    - echo "Finding Licenses"
+    - license_finder --enable-package-managers gomodules
+
   - language: ruby
     rvm: "2.3.3"
     script:
@@ -7,4 +16,4 @@ jobs:
     - echo "Installing license finder ..."
     - gem install license_finder
     - echo "Finding Licenses"
-    - license_finder 
+    - license_finder --enabled-package-managers npm
