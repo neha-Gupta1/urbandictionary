@@ -1,6 +1,6 @@
 dist: xenial
 jobs:
-  language: go
+  - language: go
     go: 1.15.x
     script:
     - gem -v
