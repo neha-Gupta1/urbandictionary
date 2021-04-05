@@ -12,6 +12,7 @@ jobs:
   - language: ruby
     rvm: "2.3.3"
     script:
+    - npm install
     - gem -v
     - echo "Installing license finder ..."
     - gem install license_finder
