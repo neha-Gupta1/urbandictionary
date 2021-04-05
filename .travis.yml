@@ -3,11 +3,12 @@ jobs:
   - language: go
     go: 1.15.x
     script:
+    - go list
     - gem -v
     - echo "Installing license finder ..."
     - gem install license_finder
     - echo "Finding Licenses"
-    - license_finder
+    - license_finder --enabled-package-managers gomodules
 
   - language: ruby
     rvm: "2.3.3"
