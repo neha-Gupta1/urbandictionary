@@ -10,7 +10,6 @@ jobs:
     - echo "Finding Licenses"
 #     - license_finder --enabled-package-managers gomodules || true
     - license_finder report --format csv --columns=name version licenses approved --enabled-package-managers gomodules > license.csv
-    - sed -i '1d' license.csv
     - column -s, -t < license.csv | less -#2 -N -S\n
 
   - language: ruby
@@ -24,4 +23,5 @@ jobs:
     - echo "Finding Licenses"
 #     - license_finder action_items --enabled-package-managers npm || true
     - license_finder report --format csv --columns=name version licenses approved --enabled-package-managers npm > license.csv
+    - sed -i '1d' license.csv
     - cat license.csv | tty-table
