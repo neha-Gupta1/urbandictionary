@@ -4,13 +4,14 @@ jobs:
     go: 1.15.x
     script:
     - go list
+    - npm i -g tty-table
     - gem -v
     - echo "Installing license finder ..."
     - gem install license_finder
-    - echo "Finding Licenses"
-#     - license_finder --enabled-package-managers gomodules || true
+    - echo "Finding Licenses for Dependencies"
     - license_finder report --format csv --columns=name version licenses approved --enabled-package-managers gomodules > license.csv
-    - column -s, -t < license.csv | less -#2 -N -S\n
+    - sed -i '1d' license.csv
+    - cat license.csv | tty-table
 
   - language: ruby
     rvm: "2.3.3"
@@ -20,8 +21,7 @@ jobs:
     - gem -v
     - echo "Installing license finder ..."
     - gem install license_finder
-    - echo "Finding Licenses"
-#     - license_finder action_items --enabled-package-managers npm || true
+    - echo "Finding Licenses for Dependencies"
     - license_finder report --format csv --columns=name version licenses approved --enabled-package-managers npm > license.csv
     - sed -i '1d' license.csv
     - cat license.csv | tty-table
