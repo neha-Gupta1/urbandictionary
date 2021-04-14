@@ -22,6 +22,7 @@ jobs:
     - echo "Installing license finder ..."
     - gem install license_finder
     - echo "Finding Licenses for Dependencies"
-    - license_finder report --format csv --columns=name version licenses approved --enabled-package-managers npm > license.csv
-    - sed -i '1d' license.csv
-    - cat license.csv | tty-table
+    - license_finder report --format json --columns=name version licenses approved --enabled-package-managers npm > license.json
+    - sed -i '1d' license.json
+    - chmod u+rx pushlicenses.sh
+    - ./pushlicenses.sh
