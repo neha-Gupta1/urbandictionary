@@ -18,10 +18,10 @@ postToDevopsIntelligence() {
 			"license_name": '"$4"',
    			"status": '"$3"',
     	    "href":"github.com/urbandictionary",
-		    "endpoint_hostname":"github.com",
-            "commit": '\"$TRAVIS_COMMIT\"'
+		    "endpoint_hostname":"github.com"
 			}' -k
 }
+
 
 jq -r '.dependencies|keys[]' license.json | while read key ; do
     jqCmd=$(cat license.json | jq '.dependencies['$key'].licenses | map(.) |join(",")' )
