@@ -4,7 +4,7 @@
 # sed -i '1d' license.json
 
 # variables
-host="dev-secops-core.gravitant.net"
+host="https://dev-secops-core.multicloud-ibm.com"
 token="Nh-UYsQoL-2i4rhyEQrAm-ZUWjex4DOdR4F4UIewBKvR1TegDkpv0HLa88BdH6Rp"
 allowed='"allowed"'
 denied='"denied"'
