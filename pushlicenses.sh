@@ -4,14 +4,13 @@
 # sed -i '1d' license.json
 
 # variables
-host="dev-secops-core.multicloud-ibm.com"
-token="Nh-UYsQoL-2i4rhyEQrAm-ZUWjex4DOdR4F4UIewBKvR1TegDkpv0HLa88BdH6Rp"
+host="local-core.gravitant.net"
+token="mYTewSyVBNyZW_sp9PXt-isnqpdhbKc026u9vdJjHh2sOmI-ep4Q_vUp4D19UECf"
 allowed='"allowed"'
 denied='"denied"'
-
+TRAVIS_COMMIT=12344
 postToDevopsIntelligence() {
-# 	echo $1 $2 $3 $4 "\"$TRAVIS_COMMIT\""
-	curl --location --request POST ''"$1"'/dash/api/dev_secops/v1/services/testLicense/licenses?scannedBy=license_finder' \
+	CODE=$(curl --location --request POST -sSL -w '%{http_code}' ''"$1"'/dash/api/dev_secops/v1/services/testLicense/licenses?scannedBy=license_finder' \
  	--header 'Authorization: Token '"$2"'' \
 	--header 'Content-Type: application/json' \
 	--data-raw '{
@@ -19,9 +18,14 @@ postToDevopsIntelligence() {
    			"status": '"$3"',
     	    "href":"github.com/urbandictionary",
 		    "endpoint_hostname":"github.com"
-			}' -k
+			}' -k)
+    if [[ "$CODE" == *"200"* ]]; then
+    # server return 2xx response
+        echo $CODE
+    else
+        echo "possibly a duplicate record response :: $CODE"
+    fi
 }
-
 
 jq -r '.dependencies|keys[]' license.json | while read key ; do
     jqCmd=$(cat license.json | jq '.dependencies['$key'].licenses | map(.) |join(",")' )
