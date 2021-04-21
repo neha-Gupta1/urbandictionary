@@ -4,11 +4,11 @@
 # sed -i '1d' license.json
 
 # variables
-host="local-core.gravitant.net"
-token="mYTewSyVBNyZW_sp9PXt-isnqpdhbKc026u9vdJjHh2sOmI-ep4Q_vUp4D19UECf"
+host="dev-secops-core.gravitant.net"
+token="Nh-UYsQoL-2i4rhyEQrAm-ZUWjex4DOdR4F4UIewBKvR1TegDkpv0HLa88BdH6Rp"
 allowed='"allowed"'
 denied='"denied"'
-TRAVIS_COMMIT=12344
+# TRAVIS_COMMIT=12344
 postToDevopsIntelligence() {
 	CODE=$(curl --location --request POST -sSL -w '%{http_code}' ''"$1"'/dash/api/dev_secops/v1/services/testLicense/licenses?scannedBy=license_finder' \
  	--header 'Authorization: Token '"$2"'' \
