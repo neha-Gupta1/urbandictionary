@@ -10,7 +10,7 @@ allowed='"allowed"'
 denied='"denied"'
 
 postToDevopsIntelligence() {
-	echo $1 $2 $3 $4 $TRAVIS_COMMIT
+	echo $1 $2 $3 $4 "$TRAVIS_COMMIT"
 # 	curl --location --request POST ''"$1"'/dash/api/dev_secops/v1/services/testLicense/licenses?scannedBy=license_finder' \
 #  	--header 'Authorization: Token '"$2"'' \
 # 	--header 'Content-Type: application/json' \
