@@ -8,25 +8,23 @@ jobs:
     - gem -v
     - echo "Installing license finder ..."
     - gem install license_finder
-    stage: Check Licenses
     - echo "Finding Licenses for Dependencies"
     - license_finder report --format json --columns=name version licenses approved --enabled-package-managers gomodules > license.json
-    - sed -i '1d' license.csv
-    - cat license.csv | tty-table
-    stage: Publish Licenses
+    - sed -i '1d' license.json
+#     - cat license.csv | tty-table
     - ./pushlicense.sh
     
 
-#   - language: ruby
-#     rvm: "2.3.3"
-#     script:
-#     - npm install
-#     - npm i -g tty-table 
-#     - gem -v
-#     - echo "Installing license finder ..."
-#     - gem install license_finder
-#     - echo "Finding Licenses for Dependencies"
-#     - license_finder report --format json --columns=name version licenses approved --enabled-package-managers npm > license.json
-#     - sed -i '1d' license.json
+  - language: ruby
+    rvm: "2.3.3"
+    script:
+    - npm install
+    - npm i -g tty-table 
+    - gem -v
+    - echo "Installing license finder ..."
+    - gem install license_finder
+    - echo "Finding Licenses for Dependencies"
+    - license_finder report --format json --columns=name version licenses approved --enabled-package-managers npm > license.json
+    - sed -i '1d' license.json
 #     - chmod u+rx pushlicenses.sh
 #     - ./pushlicenses.sh
