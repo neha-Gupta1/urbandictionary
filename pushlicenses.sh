@@ -4,8 +4,8 @@
 # sed -i '1d' license.json
 
 # variables
-host="https://dev-secops-core.multicloud-ibm.com"
-token="Nh-UYsQoL-2i4rhyEQrAm-ZUWjex4DOdR4F4UIewBKvR1TegDkpv0HLa88BdH6Rp"
+host="https://secops-core.multicloud-ibm.com"
+token="jBmBPGgtilvJ76-GfBgZgCBXr1lnS8xbdeMScUSpMHMpXVMprZR2nbCn8-5zH9zx"
 allowed='"allowed"'
 denied='"denied"'
 branch=$(echo "\"$TRAVIS_BRANCH\"")
