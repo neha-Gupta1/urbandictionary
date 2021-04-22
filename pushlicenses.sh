@@ -11,22 +11,23 @@ denied='"denied"'
 branch=$TRAVIS_BRANCH
 # TRAVIS_COMMIT=12344
 postToDevopsIntelligence() {
-	CODE=$(curl --location --request POST -sSL -w '%{http_code}' ''"$1"'/dash/api/dev_secops/v1/services/testLicense/licenses?scannedBy=license_finder' \
- 	--header 'Authorization: Token '"$2"'' \
-	--header 'Content-Type: application/json' \
-	--data-raw '{
-			"license_name": '"$4"',
-   			"status": '"$3"',
-    	    "href":"github.com/urbandictionary",
-		    "endpoint_hostname":"github.com",
-		    "commit":'"$branch"'
-			}' -k)
-    if [[ "$CODE" == *"200"* ]]; then
-    # server return 2xx response
-        echo $CODE
-    else
-        echo "possibly a duplicate record response :: $CODE"
-    fi
+	echo $branch "\"$branch\""
+# 	CODE=$(curl --location --request POST -sSL -w '%{http_code}' ''"$1"'/dash/api/dev_secops/v1/services/testLicense/licenses?scannedBy=license_finder' \
+#  	--header 'Authorization: Token '"$2"'' \
+# 	--header 'Content-Type: application/json' \
+# 	--data-raw '{
+# 			"license_name": '"$4"',
+#    			"status": '"$3"',
+#     	    "href":"github.com/urbandictionary",
+# 		    "endpoint_hostname":"github.com",
+# 		    "commit":'"$branch"'
+# 			}' -k)
+#     if [[ "$CODE" == *"200"* ]]; then
+#     # server return 2xx response
+#         echo $CODE
+#     else
+#         echo "possibly a duplicate record response :: $CODE"
+#     fi
 }
 
 jq -r '.dependencies|keys[]' license.json | while read key ; do
