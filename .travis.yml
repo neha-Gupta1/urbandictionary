@@ -12,6 +12,7 @@ jobs:
     - license_finder report --format json --columns=name version licenses approved --enabled-package-managers gomodules > license.json
     - sed -i '1d' license.json
 #     - cat license.csv | tty-table
+    - chmod u+rx pushlicenses.sh
     - ./pushlicenses.sh
     
 
