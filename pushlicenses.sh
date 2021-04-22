@@ -9,7 +9,7 @@ token="Nh-UYsQoL-2i4rhyEQrAm-ZUWjex4DOdR4F4UIewBKvR1TegDkpv0HLa88BdH6Rp"
 allowed='"allowed"'
 denied='"denied"'
 branch=$(echo "\"$TRAVIS_BRANCH\"")
-repo=$TRAVIS_REPO_SLUG
+repo=$(echo "\"$TRAVIS_REPO_SLUG\"")
 # TRAVIS_COMMIT=12344
 
 postToDevopsIntelligence() {
