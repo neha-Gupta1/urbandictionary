@@ -9,9 +9,10 @@ token="Nh-UYsQoL-2i4rhyEQrAm-ZUWjex4DOdR4F4UIewBKvR1TegDkpv0HLa88BdH6Rp"
 allowed='"allowed"'
 denied='"denied"'
 branch=$TRAVIS_BRANCH
+repo=$TRAVIS_REPO_SLUG
 # TRAVIS_COMMIT=12344
 postToDevopsIntelligence() {
-	echo $branch "\"$branch\""
+	echo $branch "\"$branch\"" "\"$repo\""
 # 	CODE=$(curl --location --request POST -sSL -w '%{http_code}' ''"$1"'/dash/api/dev_secops/v1/services/testLicense/licenses?scannedBy=license_finder' \
 #  	--header 'Authorization: Token '"$2"'' \
 # 	--header 'Content-Type: application/json' \
