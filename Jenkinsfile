@@ -51,7 +51,7 @@ node{
                   
                     // use "publishTestResult" method to publish test result
 //publishTestResult type:'unit', fileLocation: '/var/jenkins_home/workspace/Jenkins-Github/simpleTest.json'
-                    publishTestResult fileLocation: './junit_report_tests_pass.xml', type: "unit", serviceName: "Serve", hostName: "local-core.gravitant.net", resultType: "junit"
+                    publishTestResult fileLocation: 'junit_report_tests_pass.xml', type: "unit", serviceName: "Serve", hostName: "local-core.gravitant.net", resultType: "junit"
                     //, credentialsId: '6e2239d6-7cb9-42eb-b28c-f6c72395b460'
                 } 
                 }
