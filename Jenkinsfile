@@ -4,8 +4,9 @@ node{
         "IBM_CLOUD_DEVOPS_CREDS='51545393-74c7-42fa-89cf-1bb4f62d0209'",
         "IBM_CLOUD_DEVOPS_APP_NAME='dev'",
         "IBM_CLOUD_DEVOPS_TOOLCHAIN_ID='?'",
-        // "IBM_CLOUD_DEVOPS_CREDS_USR='test12345'",
-        // "IBM_CLOUD_DEVOPS_CREDS_PSW='>>??'"
+        "IBM_DASH_HOSTNAME=secops-core.multicloud-ibm.com/dash"
+        "IBM_CLOUD_DEVOPS_CREDS_USR='test12345'",
+        "IBM_CLOUD_DEVOPS_CREDS_PSW='>>??'"
         
     ]
     
@@ -51,7 +52,7 @@ node{
                   
                     // use "publishTestResult" method to publish test result
 //publishTestResult type:'unit', fileLocation: '/var/jenkins_home/workspace/Jenkins-Github/simpleTest.json'
-                    publishTestResult fileLocation: 'junit_report_tests_pass.xml', type: "unit", serviceName: "Serve", hostName: "local-core.gravitant.net", resultType: "junit"
+                    publishTestResult fileLocation: './junit_report_tests_pass.xml', type: "unit", serviceName: "urbandictionary",  resultType: "junit"
                     //, credentialsId: '6e2239d6-7cb9-42eb-b28c-f6c72395b460'
                 } 
                 }
