@@ -35,7 +35,16 @@ node{
     
      withEnv(myEnv) {
     
-    ws("${HOME}/agent/jobs/${JOB_NAME}/builds/${BUILD_ID}/") {               
+    ws("${HOME}/agent/jobs/${JOB_NAME}/builds/${BUILD_ID}/") {  
+        
+         stage('Checkout') {
+                
+                    git(
+                        url: 'https://github.com/Wizkaley/urbandictionary.git',
+                        branch: "master"
+                    )
+                
+            }
         withCredentials([usernamePassword(credentialsId: '6e2239d6-7cb9-42eb-b28c-f6c72395b460', 
                 passwordVariable: 'IBM_CLOUD_DEVOPS_CREDS_PSW', usernameVariable: 'IBM_CLOUD_DEVOPS_CREDS_USR')]) {
                     stage('Unit Test and Code Coverage') {
