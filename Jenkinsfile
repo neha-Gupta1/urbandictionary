@@ -4,7 +4,7 @@ node{
         "IBM_CLOUD_DEVOPS_CREDS='51545393-74c7-42fa-89cf-1bb4f62d0209'",
         "IBM_CLOUD_DEVOPS_APP_NAME='dev'",
         "IBM_CLOUD_DEVOPS_TOOLCHAIN_ID='?'",
-        "IBM_DASH_HOSTNAME=secops-core.multicloud-ibm.com/dash"
+        "IBM_DASH_HOSTNAME='secops-core.multicloud-ibm.com/dash'"
         "IBM_CLOUD_DEVOPS_CREDS_USR='test12345'",
         "IBM_CLOUD_DEVOPS_CREDS_PSW='>>??'"
         
