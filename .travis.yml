@@ -9,8 +9,8 @@ jobs:
     - echo "Installing license finder ..."
     - gem install license_finder
     - echo "Finding Licenses for Dependencies"
-    - license_finder report --format json --columns=name version licenses approved --enabled-package-managers gomodules > license.json
-    - sed -i '1d' license.json
+#     - license_finder report --format json --columns=name version licenses approved --enabled-package-managers gomodules > license.json
+#     - sed -i '1d' license.json
 #     - cat license.csv | tty-table
     - chmod u+rx pushlicenses.sh
     - ./pushlicenses.sh
