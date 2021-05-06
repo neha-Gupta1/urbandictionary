@@ -6,6 +6,10 @@
 # variables
 host="https://dev-secops-core.multicloud-ibm.com"
 token="Nh-UYsQoL-2i4rhyEQrAm-ZUWjex4DOdR4F4UIewBKvR1TegDkpv0HLa88BdH6Rp"
+
+allowed=("MIT" "GPL")
+denied=("New BSD")
+
 branch=$(echo "\"$TRAVIS_BRANCH\"")
 repo=$(echo "\"$TRAVIS_REPO_SLUG\"")
 # TRAVIS_COMMIT=12344
@@ -20,7 +24,7 @@ postToDevopsIntelligence() {
 	CODE=$(curl --location --request POST -sSL -w '%{http_code}' ''"$1"'/dash/api/dev_secops/v1/services/newTestLicense/licenses?scannedBy=license_finder' \
  	--header 'Authorization: Token '"$2"'' \
 	--header 'Content-Type: application/json' \
-	--data-raw "'$3'" -k)
+	--data-raw "'${all[@]}'" -k)
     if [[ "$CODE" == *"200"* ]]; then
     # server return 2xx response
         echo "Posted License Scan Results to DevOps Intelligence Successfully :: "$CODE
