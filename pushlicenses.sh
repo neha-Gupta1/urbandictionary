@@ -91,6 +91,7 @@ for i in "${uniques[@]}"; do # traverse through the uniques and check if they ar
   fi
 done
 
+echo "test"
 echo payload
 echo ${all[0]}
 
