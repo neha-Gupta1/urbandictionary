@@ -5,7 +5,7 @@
 
 # variables
 host="https://secops-core.multicloud-ibm.com"
-token="jBmBPGgtilvJ76-GfBgZgCBXr1lnS8xbdeMScUSpMHMpXVMprZR2nbCn8-5zH9zx"
+token="dummyToken"
 
 allowed=("MIT" "GPL")
 denied=("New BSD")
