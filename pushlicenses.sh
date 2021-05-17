@@ -95,4 +95,4 @@ echo "test"
 echo payload
 echo ${all[0]}
 
-postToDevopsIntelligence $host $token
+# postToDevopsIntelligence $host $token
